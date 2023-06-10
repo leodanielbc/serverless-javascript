@@ -42,6 +42,7 @@ functions:
           method: get
     environment:
       NODE_ENV: dev
+
   updateEmployee:
     name: updateEmployee
     handler: src/updateEmployee.updateEmployee
@@ -49,6 +50,16 @@ functions:
       - httpApi:
           path: /employee/{employee_id}
           method: put
+    environment:
+      NODE_ENV: dev
+  
+  deleteEmployee:
+    name: deleteEmployee
+    handler: src/deleteEmployee.deleteEmployee
+    events:
+      - httpApi:
+          path: /employee/{employee_id}
+          method: delete
     environment:
       NODE_ENV: dev
 
