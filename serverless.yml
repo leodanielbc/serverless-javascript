@@ -42,6 +42,15 @@ functions:
           method: get
     environment:
       NODE_ENV: dev
+  updateEmployee:
+    name: updateEmployee
+    handler: src/updateEmployee.updateEmployee
+    events:
+      - httpApi:
+          path: /employee/{employee_id}
+          method: put
+    environment:
+      NODE_ENV: dev
 
 resources:
   Resources:
