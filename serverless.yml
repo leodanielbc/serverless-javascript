@@ -33,6 +33,16 @@ functions:
     environment:
       NODE_ENV: dev
 
+  getEmployee:
+    name: getEmployee
+    handler: src/getEmployee.getEmployee
+    events:
+      - httpApi:
+          path: /employee/{employee_id}
+          method: get
+    environment:
+      NODE_ENV: dev
+
 resources:
   Resources:
     DevEmployee:
