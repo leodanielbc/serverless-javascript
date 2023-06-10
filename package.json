@@ -1,16 +1,11 @@
 {
   "name": "serverless-crud",
   "version": "1.0.0",
-  "description": "",
-  "main": "src/handler.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/handler.js"
-  },
-  "keywords": [],
   "author": "Leonardo Benitez",
   "license": "ISC",
   "dependencies": {
-    "config": "^3.3.6"
+    "aws-sdk": "^2.1395.0",
+    "config": "^3.3.6",
+    "uuid": "^9.0.0"
   }
 }

@@ -84,27 +84,32 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/EmployeeManagement/dev/1686383343193-2023-06-10T07:49:03.193Z/EmployeeManagement.zip"
+          "S3Key": "serverless/EmployeeManagement/dev/1686389308987-2023-06-10T09:28:28.987Z/EmployeeManagement.zip"
         },
         "Handler": "src/createEmployee.create",
         "Runtime": "nodejs18.x",
         "FunctionName": "createEmployee",
         "MemorySize": 1024,
         "Timeout": 360,
+        "Environment": {
+          "Variables": {
+            "NODE_ENV": "dev"
+          }
+        },
         "Role": "arn:aws:iam::246172463623:role/GoServerless"
       },
       "DependsOn": [
         "CreateEmployeeLogGroup"
       ]
     },
-    "CreateEmployeeLambdaVersiong8KyEQHtHMkMoNeTNov9hvwXSsDa9tgN1bYDmC4vwM": {
+    "CreateEmployeeLambdaVersionGKXAZQCwS7OwkHhQO6Stk9rNWIyAaGCvqNVvMy5iQ0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateEmployeeLambdaFunction"
         },
-        "CodeSha256": "JisEVB/nukdRDLKvJ8aI3DSHCQc6Q2Uz/s0jCC7LubE="
+        "CodeSha256": "V7LJw5s4e/yqqUD8EKpEzqUcZtj0sJPZzaAb65vShMY="
       }
     },
     "HttpApi": {
@@ -234,7 +239,7 @@
     "CreateEmployeeLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateEmployeeLambdaVersiong8KyEQHtHMkMoNeTNov9hvwXSsDa9tgN1bYDmC4vwM"
+        "Ref": "CreateEmployeeLambdaVersionGKXAZQCwS7OwkHhQO6Stk9rNWIyAaGCvqNVvMy5iQ0"
       },
       "Export": {
         "Name": "sls-EmployeeManagement-dev-CreateEmployeeLambdaFunctionQualifiedArn"

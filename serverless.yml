@@ -20,6 +20,8 @@ functions:
       - httpApi:
           path: /employee
           method: post
+    environment:
+      NODE_ENV: dev
 
 resources:
   Resources:
@@ -37,5 +39,4 @@ resources:
 
 package:
   patterns:
-    - '!node_modules/**'
     - '!venv/**'

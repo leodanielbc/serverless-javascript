@@ -1,17 +1,33 @@
-//const config = require('config');
-//const AWS = require('aws-sdk');
-//const dynamoDb = new AWS.DynamoDB.DocumentClient();
+const config = require('config');
+const AWS = require('aws-sdk');
+const dynamoDb = new AWS.DynamoDB.DocumentClient();
+const { v4 } = require('uuid');
 
 module.exports.create = async (event) => {
-    //const USER_AGENT = JSON.stringify(event.headers['User-Agent']);
-    //const PLATFORM = JSON.stringify(event.headers['x-app-platform']);
 
-    //console.log(
-      //  `PLATFORM: ${PLATFORM} - USER-AGENT: ${USER_AGENT}`
-    //);
+    const TableName = config.get('dynamodb.table');
+
+    const { name, age, position } = JSON.parse(event.body);
+    const createdAt = new Date().toISOString();
+    const employee_id = v4();
+
+    const newEmployee = {
+      employee_id,
+      name,
+      age,
+      position,
+      createdAt,
+    }
+
+    await dynamoDb.put({
+      TableName,
+      Item: newEmployee,
+    }).promise();
 
     return {
-        statusCode: 200,
-        body: 'Ok!!',
+        status: 200,
+        body: {
+          message: 'Resource created successfully'
+        }
     };
 };

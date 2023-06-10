@@ -1,5 +1,5 @@
 {
     "dynamodb": {
-        "table": "dev-employees"
+        "table": "DevEmployee"
     }
 }
