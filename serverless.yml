@@ -1,0 +1,41 @@
+service: EmployeeManagement
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  role: arn:aws:iam::246172463623:role/GoServerless
+  timeout: 360
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource:
+        - arn:aws:dynamodb:us-east-1:246172463623:table/DevEmployee
+
+functions:
+  createEmployee:
+    name: createEmployee
+    handler: src/createEmployee.create
+    events:
+      - httpApi:
+          path: /employee
+          method: post
+
+resources:
+  Resources:
+    DevEmployee:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: DevEmployee
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: employee_id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: employee_id
+            KeyType: HASH
+
+package:
+  patterns:
+    - '!node_modules/**'
+    - '!venv/**'
