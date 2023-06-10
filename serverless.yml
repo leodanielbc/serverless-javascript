@@ -22,6 +22,16 @@ functions:
           method: post
     environment:
       NODE_ENV: dev
+  
+  getEmployees:
+    name: getEmployees
+    handler: src/getEmployees.getEmployees
+    events:
+      - httpApi:
+          path: /employee
+          method: get
+    environment:
+      NODE_ENV: dev
 
 resources:
   Resources:
